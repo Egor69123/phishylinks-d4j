@@ -1,0 +1,40 @@
+server:
+  port: ${PORT:8080}
+
+application:
+  swagger-password: ${SWAGGER_PASSWORD}
+  guild-id: ${GUILD_ID}
+  mute-role-id: ${MUTE_ROLE_ID}
+  notification-channel-id: ${NOTIFICATION_CHANNEL_ID}
+  heroku-app-name: ${HEROKU_APP_NAME}
+  staff-roles: ${APPLICATION_STAFFROLES}
+
+spring:
+  application:
+    name: phishylinks
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: ${DB_URL}
+    username: ${DB_LOGIN}
+    password: ${DB_PASSWORD}
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        globally_quoted_identifiers: false
+
+  liquibase:
+    change-log: classpath:/liquibase/rootChangeLog.xml
+    enabled: true
+
+  jackson:
+    serialization:
+      indent_output: true
+logging:
+  level:
+    ROOT: info

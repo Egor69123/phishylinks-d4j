@@ -1,0 +1,7 @@
+{
+    "command": {
+        "name": "Blacklist links",
+        "type": 3,
+        "default_permission": true
+    }
+}

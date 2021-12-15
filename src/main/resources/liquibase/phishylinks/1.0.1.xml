@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <property name="autoIncrement" value="false" dbms="mssql,oracle"/>
+    <property name="autoIncrement" value="true" dbms="h2, postgresql"/>
+
+    <changeSet id="create-table-blacklisted_links" author="jexom">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="blacklisted_links"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="blacklisted_links">
+            <column name="id" type="bigint">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="link" type="varchar(255)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="load-update-blacklisted_links" author="Jexom">
+        <preConditions onFail="MARK_RAN">
+            <tableExists tableName="blacklisted_links"/>
+        </preConditions>
+        <loadUpdateData tableName="blacklisted_links"
+                        file="links.csv"
+                        separator=";"
+                        relativeToChangelogFile="true"
+                        primaryKey="id"/>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,41 @@
+server:
+  port: ${PORT:8080}
+
+application:
+  swagger-password: 123
+  guild-id: 920734608067293194
+  mute-role-id: 920735367727046716
+  notification-channel-id: 920734608067293197
+  heroku-app-name: phishytest
+  staff-roles:
+    - 920735475810050048
+
+spring:
+  application:
+    name: phishylinks
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/ppppubot
+    username: ppppubot
+    password: 123456
+
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate:
+        globally_quoted_identifiers: false
+
+  liquibase:
+    change-log: classpath:/liquibase/rootChangeLog.xml
+    enabled: true
+
+  jackson:
+    serialization:
+      indent_output: true
+logging:
+  level:
+    ROOT: info

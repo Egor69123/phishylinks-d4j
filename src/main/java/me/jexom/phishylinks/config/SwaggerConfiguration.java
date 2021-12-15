@@ -14,7 +14,7 @@ public class SwaggerConfiguration {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("me.jexom.phishylinks.main.java.me.jexom.phishylinks.controller"))
+                .apis(RequestHandlerSelectors.basePackage("me.jexom.phishylinks.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
